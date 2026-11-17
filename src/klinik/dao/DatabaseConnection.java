@@ -14,7 +14,11 @@ import java.sql.Statement;
  * Pengelola koneksi SQLite menuju data/klinik.db dengan penegakan PRAGMA foreign_keys = ON.
  */
 public final class DatabaseConnection {
-    private static final Path DB_PATH = Paths.get("data", "klinik.db");
+    /**
+     * Lokasi database. Default data/klinik.db; dapat diganti lewat -Dklinik.db=path
+     * (dipakai ConsoleTest agar pengujian tidak menyentuh data asli).
+     */
+    private static final Path DB_PATH = Paths.get(System.getProperty("klinik.db", "data/klinik.db"));
 
     private DatabaseConnection() {
     }
